@@ -25,6 +25,7 @@
             <td>{{$user->email}}</td>
             <td>{{$user->password}}</td>
             <td>{{$user->role->name}}</td>
+
             {{-- <td><a class="btn btn-warning" href="{{route('user.show',['id'=>$user->id])}}">show</a>
             </td> --}}
             <td> 
@@ -33,11 +34,14 @@
                 {{-- @endcan  --}}
               </td>
             <td> 
+              @can('admin')
+                
               <form action="{{route('users.destroy', ['id'=>$user->id])}}" method="POST">
                   @method('DELETE')
                   @csrf
                   <button class="btn btn-danger">delete</button>
-              </form> 
+                </form> 
+                @endcan
               
             </td>
           </tr>

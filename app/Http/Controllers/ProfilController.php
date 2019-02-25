@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Profil;
+use App\Role;
+use App\User;
 use Illuminate\Http\Request;
 
 use Storage;
@@ -16,7 +18,10 @@ class ProfilController extends Controller
      */
     public function index()
     {
-        //
+        $profils = Profil::all();
+        $roles = Role::all();
+        $users = User::all();
+        return view('account.profils', compact('profils', 'roles', 'users'));
     }
 
     /**
@@ -59,7 +64,7 @@ class ProfilController extends Controller
      */
     public function edit(Profil $profil)
     {
-        return view('profils-edit', compact('profil'));
+        return view('account.profils-edit', compact('profil'));
     }
 
     /**
@@ -72,13 +77,14 @@ class ProfilController extends Controller
     public function update(Request $request, Profil $profil)
     {
        
-        $this->authorize('update', $profil);
+        // $this->authorize('update', $profil);
         $profil->prenom=$request->prenom;
         $profil->nom=$request->nom;
         $profil->image=$request->image->store('', 'image');
         $profil->save();
         $profils = Profil::all();
-        return view('profils-show', compact('profils', 'profil'));
+        $users = User::all();
+        return view('account.profils', compact('profils','users'));
     }
 
     /**

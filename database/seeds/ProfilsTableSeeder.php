@@ -18,7 +18,6 @@ class ProfilsTableSeeder extends Seeder
             'image' => '/public/img/team/1.jpg',
         ]);
         Profil::create([
-           
             'nom' => 'Younes',
             'prenom' => 'Lol',
             'image' => '/public/img/team/2.jpg',

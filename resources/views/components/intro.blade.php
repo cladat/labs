@@ -1,13 +1,14 @@
 <div class="hero-section">
 		<div class="hero-content">
 			<div class="hero-center">
-				<img src="img/big-logo.png" alt="">
-				<p>Get your freebie template now!</p>
+				<img src="{{Storage::disk('image')->url($cont->carousel_logo)}}" alt="">
+				<p>{{$cont->carousel_text}}</p>
 			</div>
 		</div>
 		<!-- slider -->
 		<div id="hero-slider" class="owl-carousel">
-			<div class="item  hero-item" data-bg="img/01.jpg"></div>
-			<div class="item  hero-item" data-bg="img/02.jpg"></div>
+		@foreach ($carou as $item)
+			<div class="item  hero-item" data-bg="{{Storage::disk('image')->url($item->photo)}}"></div>
+		@endforeach
 		</div>
 	</div>

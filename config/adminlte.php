@@ -144,6 +144,30 @@ return [
         ],
         'SITE MANAGEMENT',
         [
+            'text'    => 'CAROUSEL',
+            'icon'    => 'picture-o',
+            'submenu' => [
+                [
+                    'text' => 'All pictures',
+                    'url'  => 'carousel',
+                ],
+                [
+                    'text' => 'Add picture',
+                    'url'  => 'carousel/create',
+                ],
+            ],
+        ],
+        [
+            'text'    => 'SITE CONTENT',
+            'icon'    => 'edit',
+            'submenu' => [
+                [
+                    'text' => 'All content',
+                    'url'  => 'content',
+                ],
+            ],
+        ],
+        [
             'text'    => 'BLOG',
             'icon'    => 'newspaper-o',
             'submenu' => [
