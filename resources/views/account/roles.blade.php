@@ -23,14 +23,18 @@
     <th scope="row"> {{$role->id}} </th>
     <td>{{$role->name}}</td>
     <td> 
+      @can('admin')
       <a href="{{route('roles.edit', ['id'=>$role->id])}}" class="btn btn-warning">edit</a>
+      @endcan
     </td>
     <td> 
+        @can('admin')
         <form action="{{route('roles.destroy',['id'=>$role->id])}} " method="POST">
           @method('DELETE')
           @csrf
             <button class="btn btn-danger"> delete </button>
         </form>
+        @endcan 
      </td>
 
     </tr>

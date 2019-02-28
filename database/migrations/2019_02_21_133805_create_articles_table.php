@@ -16,11 +16,14 @@ class CreateArticlesTable extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->timestamp('date');
             $table->text('text');
             $table->string('image');
             $table->unsignedInteger('category_id')->default(1);
             $table ->foreign('category_id')->references('id')->on('categories');
+            // $table->unsignedInteger('user_id');
+            // $table ->foreign('user_id')->references('id')->on('users');
+            $table->unsignedInteger('profil_id');
+            $table ->foreign('profil_id')->references('id')->on('profils');
             $table->timestamps();
         });
     }

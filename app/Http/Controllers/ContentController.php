@@ -77,6 +77,7 @@ class ContentController extends Controller
         $content->projects_title=$request->projects_title;
         $content->projects_text1 = $request->projects_text1;
         $content->projects_text2 = $request->projects_text2;
+        $content->video = $request->video;
         $content->clients_title = $request->clients_title;
         $content->services_title = $request->services_title;
         $content->team_title = $request->team_title;

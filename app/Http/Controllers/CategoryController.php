@@ -14,7 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::all();
+        return view('site.blog.categories', compact('categories'));
     }
 
     /**
@@ -24,7 +25,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('site.blog.categories-create');
     }
 
     /**
@@ -35,7 +36,11 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newcat = new Category;
+        $newcat->name = $request->name;
+        $newcat->save();
+        $categories = Category::all();
+        return view('site.blog.categories', compact('categories'));
     }
 
     /**
@@ -57,7 +62,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('site.blog.categories-edit', compact('category'));
     }
 
     /**
@@ -69,7 +74,10 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $category->name = $request->name;
+        $category->save();
+        $categories = Category::all();
+        return view('site.blog.categories', compact('categories'));
     }
 
     /**
@@ -80,6 +88,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        $categories = Category::all();
+        return view('site.blog.categories', compact('categories'));
     }
 }

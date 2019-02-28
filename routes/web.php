@@ -15,14 +15,19 @@ Route::middleware('auth')->group(function () {
     Route::resource('/roles', 'RoleController');
     Route::resource('/users', 'UserController');
     Route::resource('/profils', 'ProfilController');
-    Route::resource('/services', 'ServiceController');
+    Route::resource('/service', 'ServiceController');
     Route::resource('/carousel', 'CarouselController');
     Route::resource('/content', 'ContentController');
+    Route::resource('/client', 'ClientController');
+    Route::resource('/project', 'ProjectController');
+    Route::resource('/article', 'ArticleController');
+    Route::resource('/category', 'CategoryController');
+    Route::resource('/tag', 'TagController');
 });
 
-Route::get('/blog', function() {
-    return view('pages.blog');
-})-> name('blog');
+Route::get('/users/{user}/block', 'UserController@block')->name('users.block');
+Route::get('/users/{user}/deblock', 'UserController@deblock')->name('users.deblock');
+
 Route::get('/contact', function() {
     return view('pages.contact');
 })-> name('contact');
@@ -32,5 +37,9 @@ Route::get('/elements', function() {
 Auth::routes();
 
 Route::get('/', 'HomepageController@index')->name('/');
+
+Route::get('/services', 'ServicepageController@index')->name('services');
+Route::get('/blog', 'BlogController@index')->name('blog');
+Route::get('/blog-test', 'BlogController@show')->name('blog.show');
 
 Route::get('/home', 'HomeController@index')->name('home');

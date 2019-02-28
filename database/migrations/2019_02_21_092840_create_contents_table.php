@@ -20,6 +20,7 @@ class CreateContentsTable extends Migration
             $table->string('projects_title');
             $table->text('projects_text1');
             $table->text('projects_text2');
+            $table->string('video');
             $table->string('clients_title');
             $table->string('services_title');
             $table->string('team_title');

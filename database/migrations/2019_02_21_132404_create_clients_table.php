@@ -19,6 +19,7 @@ class CreateClientsTable extends Migration
             $table->string('image');
             $table->string('job');
             $table->string('testimony');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

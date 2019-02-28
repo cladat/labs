@@ -18,8 +18,8 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/flaticon.css"/>
 	<link rel="stylesheet" href="css/font-awesome.min.css"/>
-	<link rel="stylesheet" href="css/flaticon.css"/>
 	<link rel="stylesheet" href="css/magnific-popup.css"/>
 	<link rel="stylesheet" href="css/owl.carousel.css"/>
     <link rel="stylesheet" href="css/style.css"/>
@@ -35,13 +35,12 @@
             <h2>Loading.....</h2>
         </div>
     </div>
-
-        @include('layouts.nav')
-
-        @yield('content')
+    @include('layouts.nav')
     
-        @include('layouts.footer')
-
+    @yield('content')
+    
+    @include('layouts.footer')
+    
 
     <script src="js/jquery-2.1.4.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

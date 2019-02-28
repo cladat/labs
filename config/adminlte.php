@@ -120,6 +120,7 @@ return [
                 [
                     'text' => 'Create new user',
                     'url'  => 'users/create',
+                    'can' => 'admin',
                 ],
             ],
         ],
@@ -134,6 +135,7 @@ return [
                 [
                     'text' => 'Create new role',
                     'url'  => 'roles/create',
+                    'can' => 'admin',
                 ],
             ],
         ],
@@ -173,15 +175,17 @@ return [
             'submenu' => [
                 [
                     'text' => 'Our articles',
-                    'url'  => 'articles',
+                    'url'  => 'article',
                 ],
                 [
                     'text' => 'Create new article',
-                    'url'  => 'articles/create',
+                    'url'  => 'article/create',
+                    
                 ],
                 [
                     'text' => 'Our comments',
                     'url'  => 'comments',
+                    'can' => 'admin', 'editor',
                 ],
                 [
                     'text' => 'Manage comments',
@@ -194,14 +198,16 @@ return [
                 [
                     'text' => 'Add new category',
                     'url'  => 'category/create',
+                    'can' => 'admin', 'editor',
                 ],
                 [
                     'text' => 'All tags',
-                    'url'  => 'tags',
+                    'url'  => 'tag',
                 ],
                 [
                     'text' => 'Add new tag',
-                    'url'  => 'tags/create',
+                    'url'  => 'tag/create',
+                    'can' => 'admin', 'editor',
                 ],
             ],
         ],
@@ -211,7 +217,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'All services',
-                    'url'  => 'services',
+                    'url'  => 'service',
                 ],
                 [
                     'text' => 'Create new service',
@@ -225,11 +231,11 @@ return [
             'submenu' => [
                 [
                     'text' => 'All projects',
-                    'url'  => 'projects',
+                    'url'  => 'project',
                 ],
                 [
                     'text' => 'Create new project',
-                    'url'  => 'projects/create',
+                    'url'  => 'project/create',
                 ],
             ],
         ],
@@ -239,11 +245,11 @@ return [
             'submenu' => [
                 [
                     'text' => 'All clients',
-                    'url'  => 'clients',
+                    'url'  => 'client',
                 ],
                 [
                     'text' => 'Add new client',
-                    'url'  => 'clients/create',
+                    'url'  => 'client/create',
                 ],
             ],
         ],

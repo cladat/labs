@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Service;
-use App\Content;
+use App\Icon;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
@@ -15,8 +15,9 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $cont = Content::all()->first();
-        return view('pages.services', compact('cont'));
+        $services = Service::all();
+        $icon = Icon::all();
+       return view('site.services', compact('services', 'icon'));
     }
 
     /**
@@ -26,7 +27,8 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        //
+        $icons = Icon::all();
+        return view('site.services-create', compact('icons'));
     }
 
     /**
@@ -37,7 +39,14 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newservice = new Service;
+        $newservice->title=$request->title;
+        $newservice->description=$request->description;
+        $newservice->icon_id=$request->icon_id;
+        $newservice->save();
+        $services = Service::all();
+        $icon = Icon::all();
+        return view('site.services', compact('services', 'icon'));
     }
 
     /**
@@ -59,7 +68,8 @@ class ServiceController extends Controller
      */
     public function edit(Service $service)
     {
-        //
+        $icons = Icon::all();
+        return view('site.services-edit', compact('service', 'icons'));
     }
 
     /**
@@ -71,7 +81,13 @@ class ServiceController extends Controller
      */
     public function update(Request $request, Service $service)
     {
-        //
+        $service->title=$request->title;
+        $service->description=$request->description;
+        $service->icon_id=$request->icon_id;
+        $service->save();
+        $icon = Icon::all();
+        $services = Service::all();
+        return view('site.services', compact('services','icon'));
     }
 
     /**
@@ -82,6 +98,9 @@ class ServiceController extends Controller
      */
     public function destroy(Service $service)
     {
-        //
+        $service->delete();
+        $services = Service::all();
+        $icon = Icon::all();
+        return view('site.services', compact('services', 'icon'));
     }
 }

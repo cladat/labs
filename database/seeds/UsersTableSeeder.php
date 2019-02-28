@@ -18,6 +18,7 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('adminlabs'), // secret
             'role_id' => 1,
             'profil_id' => 1,
+            'status' => 1,
         ]);
         User::create([
             'email' => 'editor@labs.be',
@@ -25,6 +26,7 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('editorlabs'), // secret
             'role_id' => 2,
             'profil_id' => 2,
+            'status' => 1,
         ]);
         User::create([
             'email' => 'mrlol@labs.be',
@@ -32,6 +34,7 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('lollabs'), // secret
             'role_id' => 3,
             'profil_id' => 3,
+            'status' => 1,
         ]);
     }
 }

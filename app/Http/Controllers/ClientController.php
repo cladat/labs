@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Client;
+use Storage;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
@@ -14,7 +15,8 @@ class ClientController extends Controller
      */
     public function index()
     {
-        //
+        $clients = Client::all();
+        return view('site.clients', compact('clients'));
     }
 
     /**
@@ -24,7 +26,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        //
+        return view('site.clients-create');
     }
 
     /**
@@ -35,7 +37,14 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newclient = new Client;
+        $newclient->name = $request->name;
+        $newclient->job = $request->job;
+        $newclient->testimony = $request->testimony;
+        $newclient->image = $request->image->store('', 'image');
+        $newclient->save();
+        $clients = Client::all();
+        return view('site.clients', compact('clients'));
     }
 
     /**
@@ -57,7 +66,7 @@ class ClientController extends Controller
      */
     public function edit(Client $client)
     {
-        //
+        return view('site.clients-edit', compact('client'));
     }
 
     /**
@@ -69,7 +78,13 @@ class ClientController extends Controller
      */
     public function update(Request $request, Client $client)
     {
-        //
+        $client->name=$request->name;
+        $client->job=$request->job;
+        $client->testimony=$request->testimony;
+        $client->image=$request->image->store('', 'image');
+        $client->save();
+        $clients = Client::all();
+        return view('site.clients', compact('clients'));
     }
 
     /**
@@ -80,6 +95,8 @@ class ClientController extends Controller
      */
     public function destroy(Client $client)
     {
-        //
+        $client->delete();
+        $clients = Client::all();
+        return view('site.clients', compact('clients'));
     }
 }

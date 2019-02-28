@@ -46,8 +46,7 @@ class UserController extends Controller
     public function store(StoreUser $request, Profil $profil)
     {
         $newprofil = new Profil;
-        $newprofil->nom = $request->nom;
-        $newprofil->prenom = $request->prenom;
+        $newprofil->name = $request->name;
         $newprofil->image = $request->image->store('', 'image');
         $newprofil->save();
         $newuser = new User;
@@ -116,18 +115,18 @@ class UserController extends Controller
         return view('account.users', compact('users'));
     }
 
-    // public function block(User $user)
-    // {
-    //     $user->status = 0;
-    //     $user->save();
-    //     $users = User::all();
-    //     return view('account.users', compact('users'));
-    // }
-    // public function deblock(User $user)
-    // {
-    //     $user->status = 1;
-    //     $user->save();
-    //     $users = User::all();
-    //     return view('account.users', compact('users'));
-    // }
+    public function block(User $user)
+    {
+        $user->status = 0;
+        $user->save();
+        $users = User::all();
+        return view('account.users', compact('users'));
+    }
+    public function deblock(User $user)
+    {
+        $user->status = 1;
+        $user->save();
+        $users = User::all();
+        return view('account.users', compact('users'));
+    }
 }

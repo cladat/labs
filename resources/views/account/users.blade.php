@@ -13,37 +13,40 @@
           <tr>
             <th scope="col">#</th>
             <th scope="col">Email</th>
-            <th scope="col">Password</th>
             <th scope="col">Role</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            @foreach ($users as $user)
+            @foreach ($users as $item)
                   
-            <th scope="row">{{$user->id}}</th>
-            <td>{{$user->email}}</td>
-            <td>{{$user->password}}</td>
-            <td>{{$user->role->name}}</td>
-
-            {{-- <td><a class="btn btn-warning" href="{{route('user.show',['id'=>$user->id])}}">show</a>
-            </td> --}}
+            <th scope="row">{{$item->id}}</th>
+            <td class="{{$item->status===0 ? 'text-light':''}}">{{$item->email}}</td>
+            <td class="{{$item->status===0 ? 'text-light':''}}">{{$item->role->name}}</td>
             <td> 
-                {{-- @can('update', $item) --}}
-                  <a href="{{route('users.edit', ['id'=>$user->id])}}" class="btn btn-warning">edit</a>
-                {{-- @endcan  --}}
+                @can('update', $item)
+                  <a href="{{route('users.edit', ['id'=>$item->id])}}" class="btn btn-warning">edit</a>
+                @endcan 
               </td>
             <td> 
               @can('admin')
-                
-              <form action="{{route('users.destroy', ['id'=>$user->id])}}" method="POST">
+              <form action="{{route('users.destroy', ['id'=>$item->id])}}" method="POST">
                   @method('DELETE')
                   @csrf
                   <button class="btn btn-danger">delete</button>
                 </form> 
                 @endcan
-              
             </td>
+            <td>
+              @can('admin')
+                @if ($item->status===1)
+                <a href="{{route('users.block',['id'=>$item->id])}} " class="btn btn-dark">désactiver user</a>
+                @else
+                <a href="{{route('users.deblock',['id'=>$item->id])}} " class="btn btn-success">réactiver user</a>
+                @endif
+              @endcan
+            </td>
+
           </tr>
           @endforeach
         </tbody>

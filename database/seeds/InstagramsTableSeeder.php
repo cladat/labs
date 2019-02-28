@@ -13,23 +13,6 @@ class InstagramsTableSeeder extends Seeder
      */
     public function run()
     {
-        Instagram::create([
-            'pic' => 'img/instagram/1',
-        ]);
-        Instagram::create([
-            'pic' => 'img/instagram/2',
-        ]);
-        Instagram::create([
-            'pic' => 'img/instagram/3',
-        ]);
-        Instagram::create([
-            'pic' => 'img/instagram/4',
-        ]);
-        Instagram::create([
-            'pic' => 'img/instagram/5',
-        ]);
-        Instagram::create([
-            'pic' => 'img/instagram/6',
-        ]);
+        $instagrams = factory(App\Instagram::class, 6)->create();
     }
 }

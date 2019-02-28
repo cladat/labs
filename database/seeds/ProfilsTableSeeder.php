@@ -13,19 +13,16 @@ class ProfilsTableSeeder extends Seeder
     public function run()
     {
         Profil::create([
-            'nom' => 'Adam',
-            'prenom' => 'Adam',
+            'name' => 'Clara Datso',
             'image' => '/public/img/team/1.jpg',
         ]);
         Profil::create([
-            'nom' => 'Younes',
-            'prenom' => 'Lol',
+            'name' => 'Younes Erraide',
             'image' => '/public/img/team/2.jpg',
         ]);
         Profil::create([
            
-            'nom' => 'Mimo',
-            'prenom' => 'Momo',
+            'name' => 'Mimo Bellavia',
             'image' => '/public/img/team/3.jpg',
         ]);
     }

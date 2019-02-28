@@ -16,6 +16,9 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         'App\Model' => 'App\Policies\ModelPolicy',
+        'App\User' => 'App\Policies\UserPolicy',
+        'App\Profil' => 'App\Policies\ProfilPolicy',
+        'App\Article' => 'App\Policies\ArticlePolicy',
     ];
 
     /**
@@ -29,6 +32,12 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::define('admin', function ($user) {
             return Auth::user()->role->name === 'admin';
+            });
+        Gate::define('editor', function ($user) {
+            return Auth::user()->role->name === 'editor';
+            });
+        Gate::define('guest', function ($user) {
+            return Auth::user()->role->name === 'guest';
             });
     }
 }

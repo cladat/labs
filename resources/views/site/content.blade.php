@@ -27,7 +27,7 @@
         <h5> <strong> Projects Title</strong></h5>
         <p>{{$content->projects_title}}</p>
       </div>
-    </div>
+</div>
     <div class="list-group">
         <div class="list-group-item">
           <h5> <strong> Projects Text (left paragraph)</strong></h5>
@@ -38,6 +38,12 @@
           <div class="list-group-item">
             <h5> <strong> Projects Text (right paragraph)</strong></h5>
             <p>{{$content->projects_text2}}</p>
+          </div>
+        </div>
+        <div class="list-group">
+          <div class="list-group-item">
+            <h5> <strong>Project Video</strong></h5>
+          <video src="{{$content->video}}" style="width:300px"></video>
           </div>
         </div>
         <div class="list-group">

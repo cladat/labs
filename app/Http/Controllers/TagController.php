@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Tag;
+use App\Category;
+use App\Instagram;
+use App\Article;
 use Illuminate\Http\Request;
 
 class TagController extends Controller
@@ -14,7 +17,8 @@ class TagController extends Controller
      */
     public function index()
     {
-        //
+        $tags = Tag::all();
+        return view('site.blog.tags', compact('tags'));
     }
 
     /**
@@ -24,7 +28,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        //
+        return view('site.blog.tags-create');
     }
 
     /**
@@ -35,7 +39,11 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newtag = new Tag;
+        $newtag->name = $request->name;
+        $newtag->save();
+        $tags = Tag::all();
+        return view('site.blog.tags', compact('tags'));
     }
 
     /**
@@ -46,7 +54,11 @@ class TagController extends Controller
      */
     public function show(Tag $tag)
     {
-        //
+        // $articles = $tag->articles;
+        // $categories = Category::all();
+        // $insta = Instagram::all();
+        // $tags = Tag::all();
+        // return view('pages.lancelot', compact('articles', 'categories', 'insta', 'tags', 'tag'));
     }
 
     /**
@@ -57,7 +69,7 @@ class TagController extends Controller
      */
     public function edit(Tag $tag)
     {
-        //
+        return view('site.blog.tags-edit', compact('tag'));
     }
 
     /**
@@ -69,7 +81,10 @@ class TagController extends Controller
      */
     public function update(Request $request, Tag $tag)
     {
-        //
+        $tag->name = $request->name;
+        $tag->save();
+        $tags = Tag::all();
+        return view('site.blog.tags', compact('tags'));
     }
 
     /**
@@ -80,6 +95,8 @@ class TagController extends Controller
      */
     public function destroy(Tag $tag)
     {
-        //
+        $tag->delete();
+        $tags = Tag::all();
+        return view('site.blog.tags', compact('tags'));
     }
 }

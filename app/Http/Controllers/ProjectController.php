@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Project;
+use App\Icon;
+use Storage;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -14,7 +16,9 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        //
+        $projects = Project::all();
+        $icon = Icon::all();
+        return view('site.projets', compact('projects', 'icon'));
     }
 
     /**
@@ -24,7 +28,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        $icon = Icon::all();
+        return view('site.projets-create', compact('icon'));
     }
 
     /**
@@ -35,7 +40,15 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newproj = new Project;
+        $newproj->title=$request->title;
+        $newproj->description=$request->description;
+        $newproj->image=$request->image->store('', 'image');
+        $newproj->icon_id=$request->icon_id;
+        $newproj->save();
+        $projects = Project::all();
+        $icon = Icon::all();
+        return view('site.projets', compact('projects', 'icon'));
     }
 
     /**
@@ -57,7 +70,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        $icon = Icon::all();
+        return view('site.projets-edit', compact('project', 'icon'));
     }
 
     /**
@@ -69,7 +83,14 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        //
+        $project->title=$request->title;
+        $project->description=$request->description;
+        $project->icon_id=$request->icon_id;
+        $project->image=$request->image->store('', 'image');
+        $project->save();
+        $icon = Icon::all();
+        $projects = Project::all();
+        return view('site.projets', compact('projects','icon'));
     }
 
     /**
@@ -80,6 +101,9 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        $project->delete();
+        $projects = Project::all();
+        $icon = Icon::all();
+        return view('site.projets', compact('projects', 'icon'));
     }
 }

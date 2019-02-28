@@ -34,6 +34,10 @@
     <input type="text" name="projects_text2" value="{{$content->projects_text2}} " class="form-control" placeholder="" aria-describedby="helpId">
 </div>
 <div class="form-group">
+    <label for="">Project video (url)</label>
+<input type="url" name="video" value="{{$content->video}}" class="form-control" placeholder="" aria-describedby="helpId">
+</div>
+<div class="form-group">
     <label for="">Clients title</label>
     <input type="text" name="clients_title" value="{{$content->clients_title}} " class="form-control" placeholder="" aria-describedby="helpId">
 </div>

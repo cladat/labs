@@ -12,4 +12,7 @@ class Profil extends Model
     {
         return $this->belongsTo('App\User', 'profil_id', 'id');
     }
+    public function articles() {
+	    return $this->hasMany('App\Article', 'profil_id', 'id');
+    }
 }

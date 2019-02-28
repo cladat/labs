@@ -35,13 +35,10 @@
                 @endforeach 
                 </select>
             </div>
-            <div class="form-group">
-                <label for="">Prénom</label>
-                <input type="text" name="prenom" id="" class="form-control" placeholder="" aria-describedby="helpId">
-              </div>
+            
               <div class="form-group">
-                  <label for="">Nom</label>
-                  <input type="text" name="nom" id="" class="form-control" placeholder="" aria-describedby="helpId">
+                  <label for="">Name</label>
+                  <input type="text" name="name" id="" class="form-control" placeholder="" aria-describedby="helpId">
                 </div>
                 <div class="form-group">
                     <label for="">Photo</label>

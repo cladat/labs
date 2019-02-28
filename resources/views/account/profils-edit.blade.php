@@ -13,13 +13,9 @@
         @method('PUT')
         @csrf
       <div class="form-group">
-        <label for="">Nom</label>
-        <input type="text" name="nom" value="{{$profil->nom}} " class="form-control" placeholder="" aria-describedby="helpId">
+        <label for="">Name</label>
+        <input type="text" name="name" value="{{$profil->name}} " class="form-control" placeholder="" aria-describedby="helpId">
       </div>
-      <div class="form-group">
-          <label for="">Prénom</label>
-          <input type="text" name="prenom"  value="{{$profil->prenom}} " class="form-control" placeholder="" aria-describedby="helpId">
-        </div>
         <div class="form-group">
             <label for="">Image URL</label>
             <input type="file" name="image" class="form-control" placeholder="" aria-describedby="helpId">
