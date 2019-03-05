@@ -29,9 +29,9 @@ class UsersTableSeeder extends Seeder
             'status' => 1,
         ]);
         User::create([
-            'email' => 'mrlol@labs.be',
+            'email' => 'guest@labs.be',
             'email_verified_at' => now(),
-            'password' => bcrypt('lollabs'), // secret
+            'password' => bcrypt('guestlabs'), // secret
             'role_id' => 3,
             'profil_id' => 3,
             'status' => 1,

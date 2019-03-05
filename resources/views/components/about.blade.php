@@ -13,7 +13,7 @@
 							<i class="{{$proj->icon->code}}"></i>
 							</div>
 						<h2>{{$proj->title}}</h2>
-						<p>{{$proj->description}}</p>
+						<p>{!! str_limit($proj->description, 120)!!}</p>
 						</div>
 					</div>
 					@endforeach

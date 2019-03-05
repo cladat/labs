@@ -41,6 +41,10 @@
                   <input type="text" name="name" id="" class="form-control" placeholder="" aria-describedby="helpId">
                 </div>
                 <div class="form-group">
+                    <label for="">Job</label>
+                    <input type="text" name="job" id="" class="form-control" placeholder="" aria-describedby="helpId">
+                  </div>
+                <div class="form-group">
                     <label for="">Photo</label>
                     <input type="file" name="image" id="">
                   </div>

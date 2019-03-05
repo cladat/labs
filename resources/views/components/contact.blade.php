@@ -13,19 +13,38 @@
 					<p class="con-item">{{$cont->contact_email}}</p>
 				</div>
 				<!-- contact form -->
+				
 				<div class="col-md-6 col-pull">
-					<form class="form-class" id="con_form">
+					@if (session('alert'))
+						<div class="alert alert-success">
+							{{ session('alert') }}
+						</div>
+					@endif
+					<form action="{{route('contact.store')}}" method="POST" class="form-class" id="con_form">
+						@csrf
 						<div class="row">
 							<div class="col-sm-6">
-								<input type="text" name="name" placeholder="Your name">
+								@if($errors->has('name'))
+									<div class="text-danger">{{$errors->first('name')}} </div>
+								@endif
+								<input type="text" name="name" placeholder="Your name" value="{{old('name')}}">
 							</div>
 							<div class="col-sm-6">
-								<input type="text" name="email" placeholder="Your email">
+									@if($errors->has('email'))
+									<div class="text-danger">{{$errors->first('email')}} </div>
+								@endif
+								<input type="text" name="email" placeholder="Your email" value="{{old('email')}}">
 							</div>
 							<div class="col-sm-12">
-								<input type="text" name="subject" placeholder="Subject">
-								<textarea name="message" placeholder="Message"></textarea>
-								<button class="site-btn">send</button>
+								@if($errors->has('subject'))
+									<div class="text-danger">{{$errors->first('subject')}} </div>
+								@endif
+								<input type="text" name="subject" placeholder="Subject" value="{{old('subject')}}">
+								@if($errors->has('message'))
+									<div class="text-danger">{{$errors->first('message')}} </div>
+								@endif
+								<textarea name="message" placeholder="Message">{{old('message')}} </textarea>
+								<button type="submit" class="site-btn">send</button>
 							</div>
 						</div>
 					</form>

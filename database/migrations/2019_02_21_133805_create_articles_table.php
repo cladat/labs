@@ -17,13 +17,17 @@ class CreateArticlesTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->text('text');
+            $table->text('comms')->nullable();
+            $table->integer('day');
+            $table->string('year');
             $table->string('image');
+            $table->string('validate')->default(0);
             $table->unsignedInteger('category_id')->default(1);
             $table ->foreign('category_id')->references('id')->on('categories');
-            // $table->unsignedInteger('user_id');
-            // $table ->foreign('user_id')->references('id')->on('users');
             $table->unsignedInteger('profil_id');
             $table ->foreign('profil_id')->references('id')->on('profils');
+            $table->unsignedInteger('user_id');
+            $table ->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

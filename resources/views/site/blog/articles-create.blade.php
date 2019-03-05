@@ -28,6 +28,10 @@
             <input type="file" name="image" id="">
         </div>
         <div class="form-group">
+                <label for="">Author comment</label>
+                <input type="text" name="comms" id="" class="form-control" placeholder="" aria-describedby="helpId">
+        </div>
+        <div class="form-group">
             <label for="">Category</label>
            <select name="category_id" id="">
                @foreach ($cats as $cat)

@@ -16,6 +16,10 @@
         <label for="">Name</label>
         <input type="text" name="name" value="{{$profil->name}} " class="form-control" placeholder="" aria-describedby="helpId">
       </div>
+      <div class="form-group">
+          <label for="">Job</label>
+          <input type="text" name="job" value="{{$profil->job}} " class="form-control" placeholder="" aria-describedby="helpId">
+        </div>
         <div class="form-group">
             <label for="">Image URL</label>
             <input type="file" name="image" class="form-control" placeholder="" aria-describedby="helpId">

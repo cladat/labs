@@ -10,6 +10,9 @@ use App\Tag;
 use App\ArticleTag;
 use Auth;
 use Illuminate\Http\Request;
+use App\Events\MailarticleEvent;
+
+use Carbon\Carbon;
 
 class ArticleController extends Controller
 {
@@ -20,8 +23,9 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::all();
-        return view('site.blog.articles', compact('articles'));
+        $articles = Article::where('validate', 1)->get();
+        $now = Carbon::now();
+        return view('site.blog.articles', compact('articles','now'));
     }
 
     /**
@@ -47,14 +51,19 @@ class ArticleController extends Controller
         $newarticle = new Article;
         $newarticle->title=$request->title;
         $newarticle->text=$request->text;
+        $newarticle->comms = $request->comms;
         $newarticle->image=$request->image->store('', 'image');
+        $newarticle->day = Carbon::now()->format('d');
+        $newarticle->year = Carbon::now()->format('M Y');
         $newarticle->category_id=$request->category_id;
         $newarticle->profil_id= Auth::User()->id;
+        $newarticle->user_id= Auth::User()->id;
         $newarticle->save();
         $tag = Tag::find($request->tag_id);
         $newarticle->tags()->attach($tag);
-        $articles = Article::all();
+        $articles = Article::where('validate', 1)->get();
         $cats = Category::all();
+        event(new MailarticleEvent($request));
         return view('site.blog.articles', compact('articles', 'cats'));
     }
 
@@ -66,7 +75,7 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        //
+       return view('site.blog.articles-show', compact('article'));
     }
 
     /**
@@ -94,6 +103,7 @@ class ArticleController extends Controller
         $this->authorize('update', $article);
         $article->title=$request->title;
         $article->text=$request->text;
+        $article->comms = $request->comms;
         $article->category_id=$request->category_id;
         $article->image=$request->image->store('', 'image');
         $article->save();
@@ -101,7 +111,7 @@ class ArticleController extends Controller
         $article->tags()->detach($tag);
         $tag = Tag::find($request->tag_id);
         $article->tags()->attach($tag);
-        $articles = Article::all();
+        $articles = Article::where('validate', 1)->get();
         return view('site.blog.articles', compact('articles'));
     }
 
@@ -114,8 +124,8 @@ class ArticleController extends Controller
     public function destroy(Article $article)
     {
         $this->authorize('update', $article);
+        ArticleTag::where('article_id', 'LIKE', '%'.$article->id.'%')->delete();
         $article->delete();
-        $articles = Article::all();
-        return view('site.blog.articles', compact('articles'));
+        return redirect()->back();
     }
 }

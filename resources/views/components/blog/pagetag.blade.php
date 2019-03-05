@@ -7,10 +7,10 @@
 							
 					<div class="post-item">
 						<div class="post-thumbnail">
-							<img src="img/blog/blog-3.jpg" alt="">
+							<img src="{{Storage::disk('image')->url($article->image)}}" alt="">
 							<div class="post-date">
-								<h2>03</h2>
-								<h3>Nov 2017</h3>
+								<h2>{{$article->day}}</h2>
+								<h3>{{$article->year}}</h3>
 							</div>
 						</div>
 						<div class="post-content">
@@ -18,12 +18,12 @@
 							<div class="post-meta">
 								<a href="">{{$article->profil->name}}</a>
 								@foreach ($article->tags as $tag)
-											<a href="">{{$tag->name}},</a>
+									<a href="">{{$tag->name}},</a>
                 @endforeach
 								<a href="">2 Comments</a>
 							</div>
 							<p> {!! str_limit($article->text, 100)!!}</p>
-							<a href="blog-post.html" class="read-more">Read More</a>
+							<a href="{{route('blog.read', ['id'=>$article->id])}}" class="read-more">Read More</a>
 						</div>
 					</div>
 
@@ -49,8 +49,8 @@
 					<div class="widget-item">
 						<h2 class="widget-title">Categories</h2>
 						<ul>
-							@foreach ($categories as $item)
-							<li><a href="#">{{$item->name}} </a></li>
+							@foreach ($categories as $cat)
+							<li><a href="{{route('blog.showcat', ['id'=>$cat->id])}} ">{{$cat->name}} </a></li>
 							@endforeach
 						</ul>
 					</div>
@@ -67,9 +67,9 @@
 					<div class="widget-item">
 						<h2 class="widget-title">Tags</h2>
 						<ul class="tag">
-							@foreach ($tags as $tag)
-							<li><a href="{{route('blog.show', ['id'=>$tag->id])}}">{{$tag->name}} </a></li>
-							@endforeach
+								@foreach ($tags as $tag)
+								<li><a href="{{route('blog.show', ['id'=>$tag->id])}}">{{$tag->name}} </a></li>
+								@endforeach
 						</ul>
 					</div>
 					<!-- Single widget -->

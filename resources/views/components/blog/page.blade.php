@@ -7,10 +7,10 @@
 							
 					<div class="post-item">
 						<div class="post-thumbnail">
-							<img src="img/blog/blog-3.jpg" alt="">
+							<img src="{{Storage::disk('image')->url($article->image)}}" alt="">
 							<div class="post-date">
-								<h2>03</h2>
-								<h3>Nov 2017</h3>
+								<h2>{{$article->day}}</h2>
+								<h3>{{$article->year}}</h3>
 							</div>
 						</div>
 						<div class="post-content">
@@ -18,12 +18,12 @@
 							<div class="post-meta">
 								<a href="">{{$article->profil->name}}</a>
 								@foreach ($article->tags as $tag)
-											<a href="">{{$tag->name}},</a>
+									<a href="">{{$tag->name}},</a>
                 @endforeach
-								<a href="">2 Comments</a>
+								<a href="">{{count($article->comments->where('validate', 1))}} Comments</a>
 							</div>
-							<p> {!! str_limit($article->text, 100)!!}</p>
-							<a href="blog-post.html" class="read-more">Read More</a>
+							<p> {!! str_limit($article->text, 150)!!}</p>
+							<a href="{{route('blog.read', ['id'=>$article->id])}}" class="read-more">Read More</a>
 						</div>
 					</div>
 
@@ -31,7 +31,7 @@
 
 					<!-- Pagination -->
 					<div class="page-pagination">
-							{!! $articles->links();!!}
+							{{$articles->links()}}
 					</div>
 
 				</div>
@@ -40,8 +40,9 @@
 				<div class="col-md-4 col-sm-5 sidebar">
 					<!-- Single widget -->
 					<div class="widget-item">
-						<form action="#" class="search-form">
-							<input type="text" placeholder="Search">
+						<form action="{{route('search')}}" class="search-form" method="POST">
+							@csrf
+							<input type="text" placeholder="Search" name="inputsearcher">
 							<button class="search-btn"><i class="flaticon-026-search"></i></button>
 						</form>
 					</div>
@@ -49,8 +50,8 @@
 					<div class="widget-item">
 						<h2 class="widget-title">Categories</h2>
 						<ul>
-							@foreach ($categories as $item)
-							<li><a href="#">{{$item->name}} </a></li>
+							@foreach ($categories as $cat)
+							<li><a href="{{route('blog.showcat', ['id'=>$cat->id])}} ">{{$cat->name}} </a></li>
 							@endforeach
 						</ul>
 					</div>
@@ -67,8 +68,9 @@
 					<div class="widget-item">
 						<h2 class="widget-title">Tags</h2>
 						<ul class="tag">
-							@foreach ($tags as $item)
-							<li><a href="{{route('blog.show', ['id'=>$item->id])}}">{{$item->name}} </a></li>
+							@foreach ($tags as $tag)
+							<li><a href="{{route('blog.show', ['id'=>$tag->id])}}">{{$tag->name}} </a></li>
+						
 							@endforeach
 						</ul>
 					</div>

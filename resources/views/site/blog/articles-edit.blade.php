@@ -47,6 +47,10 @@
             <label for="">Image</label>
             <input type="file" name="image" class="form-control" placeholder="" aria-describedby="helpId">
           </div>
+          <div class="form-group">
+            <label for="">Author comment</label>
+            <input type="text" name="comms" value="{{$article->comms}}" id="" class="form-control" placeholder="" aria-describedby="helpId">
+          </div>
       
           <button class="btn btn-success" type="submit">update</button>
       

@@ -12,9 +12,9 @@ class ArticleTagTableSeeder extends Seeder
      */
     public function run()
     {
-        ArticleTag::create([
-            'article_id' => 1,
-            'tag_id' => 3,
-        ]);
+        // ArticleTag::create([
+        //     'article_id' => 1,
+        //     'tag_id' => 3,
+        // ]);
     }
 }

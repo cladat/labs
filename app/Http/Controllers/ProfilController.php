@@ -79,6 +79,7 @@ class ProfilController extends Controller
        
         // $this->authorize('update', $profil);
         $profil->name=$request->name;
+        $profil->job=$request->job;
         $profil->image=$request->image->store('', 'image');
         $profil->save();
         $profils = Profil::all();

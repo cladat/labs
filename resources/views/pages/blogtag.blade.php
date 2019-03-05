@@ -4,7 +4,7 @@
 
   @include('components.blog.header')
 
-  @include('components.blog.lancelottag')
+  @include('components.blog.pagetag')
 
   @include('components.news')
 

@@ -8,6 +8,7 @@ use App\Client;
 use App\Project;
 use App\Service;
 use App\Icon;
+use App\Profil;
 
 use Illuminate\Http\Request;
 
@@ -21,6 +22,7 @@ class HomepageController extends Controller
         $projects = Project::all()->reverse()->take(3);
         $icon = Icon::all();
         $services = Service::paginate(9);
-        return view('welcome', compact('carou', 'cont', 'clients', 'projects', 'icon', 'services'));
+        $profils = Profil::all()->random(3);
+        return view('welcome', compact('carou', 'cont', 'clients', 'projects', 'icon', 'services', 'profils'));
     }
 }

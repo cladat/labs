@@ -12,11 +12,11 @@ class CarouselsTableSeeder extends Seeder
      */
     public function run()
     {
-        Carousel::create([
-            'photo' => 'img/01.jpg',
-        ]);
-        Carousel::create([
-            'photo' => 'img/02.jpg',
-        ]);
+        // Carousel::create([
+        //     'photo' => 'img/01.jpg',
+        // ]);
+        // Carousel::create([
+        //     'photo' => 'img/02.jpg',
+        // ]);
     }
 }

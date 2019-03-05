@@ -174,6 +174,10 @@ return [
             'icon'    => 'newspaper-o',
             'submenu' => [
                 [
+                    'text' => 'Waiting validation',
+                    'url'  => 'validation',
+                ],
+                [
                     'text' => 'Our articles',
                     'url'  => 'article',
                 ],
@@ -183,13 +187,8 @@ return [
                     
                 ],
                 [
-                    'text' => 'Our comments',
-                    'url'  => 'comments',
-                    'can' => 'admin', 'editor',
-                ],
-                [
-                    'text' => 'Manage comments',
-                    'url'  => '',
+                    'text' => 'All comments',
+                    'url'  => 'commentval',
                 ],
                 [
                     'text' => 'All categories',
@@ -198,7 +197,6 @@ return [
                 [
                     'text' => 'Add new category',
                     'url'  => 'category/create',
-                    'can' => 'admin', 'editor',
                 ],
                 [
                     'text' => 'All tags',
@@ -207,7 +205,6 @@ return [
                 [
                     'text' => 'Add new tag',
                     'url'  => 'tag/create',
-                    'can' => 'admin', 'editor',
                 ],
             ],
         ],

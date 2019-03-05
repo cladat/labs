@@ -6,29 +6,18 @@
 			</div>
 			<div class="row">
 				<!-- single member -->
+				@foreach ($profils as $item)
+						
 				<div class="col-sm-4">
 					<div class="member">
-						<img src="img/team/1.jpg" alt="">
-						<h2>Christinne Williams</h2>
-						<h3>Project Manager</h3>
+						<img src="{{$item->image}}" alt="" style="width:300px">
+						<img src="{{Storage::disk('image')->url($item->image)}}" alt="" style="width:300px">
+						<h2>{{$item->name}}</h2>
+						<h3>{{$item->job}}</h3>
 					</div>
 				</div>
-				<!-- single member -->
-				<div class="col-sm-4">
-					<div class="member">
-						<img src="img/team/2.jpg" alt="">
-						<h2>Christinne Williams</h2>
-						<h3>Junior developer</h3>
-					</div>
-				</div>
-				<!-- single member -->
-				<div class="col-sm-4">
-					<div class="member">
-						<img src="img/team/3.jpg" alt="">
-						<h2>Christinne Williams</h2>
-						<h3>Digital designer</h3>
-					</div>
-				</div>
+
+				@endforeach
 			</div>
 		</div>
 	</div>

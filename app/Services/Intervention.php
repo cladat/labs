@@ -13,4 +13,18 @@ class Intervention {
         return $img;
         
     }
+
+    public function imageCrop($disk, $width, $height, $image) {
+
+        $lien = Storage::disk($disk)->path($image);
+        $img = Image::make($lien)->crop($width,$height);
+        return $img;
+    }
+
+    public function resizeCanvas($disk, $x, $y, $image) {
+
+        $lien = Storage::disk($disk)->path($image);
+        $img = Image::make($lien)->resizeCanvas($x,$y);
+        return $img;
+    }
 }

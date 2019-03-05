@@ -7,11 +7,9 @@ use App\User;
 use App\Role;
 use App\Profil;
 use Storage;
-// use App\Events\MailEvent;
-// use Mail;
-// use App\Mail\OneMail;
 use App\Http\Requests\StoreUser;
 use App\Http\Requests\UpdateUser;
+use App\Services\Intervention;
 
 class UserController extends Controller
 {
@@ -43,11 +41,15 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreUser $request, Profil $profil)
+    public function store(StoreUser $request, Profil $profil, Intervention $intervention)
     {
         $newprofil = new Profil;
         $newprofil->name = $request->name;
+        $newprofil->job = $request->job;
         $newprofil->image = $request->image->store('', 'image');
+        // image intervention for resize
+        // $img = $intervention->imageResize('image','300','300',$newprofil->image);
+        // $img->save();
         $newprofil->save();
         $newuser = new User;
         $newuser->email=$request->email;
@@ -98,7 +100,6 @@ class UserController extends Controller
         $user->role_id=$request->role_id;
         $user->save();
         $users = User::all();
-        // Mail::to($user->email)->send(new OneMail($user));
         return view('account.users', compact('users'));
     }
 
@@ -110,7 +111,9 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
+        $aa = $user->profil_id;
         $user->delete();
+        $prof = Profil::where('id', $aa)->delete();
         $users = User::all();
         return view('account.users', compact('users'));
     }

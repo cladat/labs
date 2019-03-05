@@ -9,12 +9,14 @@
 @section('content')
 
 <div class="card-columns">
-        @foreach ($users as $item)  
+        @foreach ($profils as $item)  
         <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="{{Storage::disk('image')->url($profils[$item->id-1]->image)}}" style="width:300px" alt="Card image cap">
+                <img src="{{$item->image}}" alt="">
+            <img class="card-img-top" src="{{Storage::disk('image')->url($item->image)}}">
             <div class="card-body">
-                    <h5 class="card-title">{{$profils[$item->id-1]->name}} </h5>
-                    <p class="card-text">{{$item->role->name}} </p>
+                    <h5 class="card-title">{{$item->name}} </h5>
+                    {{-- <p class="card-text">Role: {{$item->role->name}} </p> --}}
+                    <p class="card-text">Job: {{$item->job}} </p>
                     <p class="card-text"> </p>
                     @can('update', $item)
                     <a href="{{route('profils.edit',['id'=>$item->id])}} " class="btn btn-primary">edit</a>

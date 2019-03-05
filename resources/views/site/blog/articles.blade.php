@@ -3,7 +3,7 @@
 @section('title', 'AdminLTE')
 
 @section('content_header')
-    <h1>All articles</h1>
+    <h1>All articles (validated)</h1>
 @stop
 
 @section('content')
@@ -21,16 +21,20 @@
                       <span class="text-warning">- {{$tag->name}}</span>
                     @endforeach
               
-                    <h6 class="text-secondary">Creation: {{$article->created_at}} </h6>
-                    <p class="card-text">{!!($article->text)!!} </p>
+                    <h6 class="text-secondary">Creation: {{$article->day}} {{$article->year}} </h6>
+                    <p class="card-text bg-light">{!!str_limit($article->text, 100)!!} </p>
+                    <p class="card-text bg-secondary text-light">{{$article->comms}}</p>
                     
                     <div class="butts">
+
+                    <a href="{{route('article.show',['id'=>$article->id])}}" class="btn btn-warning">show</a>
+
                     @can('update', $article, Article::class)
-                    <a href="{{route('article.edit',['id'=>$article->id])}} " class="btn btn-primary">edit</a>
+                    <a href="{{route('article.edit',['article'=>$article->id])}} " class="btn btn-primary">edit</a>
                     @endcan 
 
                     @can('update', $article, Article::class)
-                    <form action="{{route('article.destroy', ['id'=>$article->id])}}" method="POST">
+                    <form action="{{route('article.destroy', ['article'=>$article->id])}}" method="POST">
                         @method('DELETE')
                         @csrf
                         <button class="btn btn-danger">delete</button>

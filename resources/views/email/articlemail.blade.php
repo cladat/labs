@@ -1,0 +1,1 @@
+<h1>Hello ! A new article has been created !</h1>

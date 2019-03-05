@@ -14,16 +14,18 @@ class ProfilsTableSeeder extends Seeder
     {
         Profil::create([
             'name' => 'Clara Datso',
-            'image' => '/public/img/team/1.jpg',
+            'image' => '/img/team/1.jpg',
+            'job' => 'Junior Developer',
         ]);
         Profil::create([
             'name' => 'Younes Erraide',
-            'image' => '/public/img/team/2.jpg',
+            'image' => '/img/team/2.jpg',
+            'job' => 'Web Designer',
         ]);
         Profil::create([
-           
-            'name' => 'Mimo Bellavia',
-            'image' => '/public/img/team/3.jpg',
+            'name' => 'Younes Erraide',
+            'image' => '/img/team/2.jpg',
+            'job' => 'Senior Developer',
         ]);
     }
 }
