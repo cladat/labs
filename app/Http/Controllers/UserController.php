@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Role;
 use App\Profil;
+use App\Article;
+use App\ArticleTag;
 use Storage;
 use App\Http\Requests\StoreUser;
 use App\Http\Requests\UpdateUser;
@@ -47,9 +49,9 @@ class UserController extends Controller
         $newprofil->name = $request->name;
         $newprofil->job = $request->job;
         $newprofil->image = $request->image->store('', 'image');
-        // image intervention for resize
-        // $img = $intervention->imageResize('image','300','300',$newprofil->image);
-        // $img->save();
+        // image intervention to resize image
+        $img = $intervention->imageResize('image','300','300',$newprofil->image);
+        $img->save();
         $newprofil->save();
         $newuser = new User;
         $newuser->email=$request->email;
@@ -112,6 +114,13 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $aa = $user->profil_id;
+        $article = Article::all();
+        $id = $user->id;
+        $articles = Article::where('user_id', 'LIKE', '%'.$id.'%')->get();
+        foreach ($articles as $article) {
+            ArticleTag::where('article_id', 'LIKE', '%'.$article->id.'%')->delete();
+            $article->delete();
+        }
         $user->delete();
         $prof = Profil::where('id', $aa)->delete();
         $users = User::all();

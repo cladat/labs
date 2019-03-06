@@ -156,12 +156,14 @@ return [
                 [
                     'text' => 'Add picture',
                     'url'  => 'carousel/create',
+                    'can'  => 'editor',
                 ],
             ],
         ],
         [
             'text'    => 'SITE CONTENT',
             'icon'    => 'edit',
+            'can'  => 'editor',
             'submenu' => [
                 [
                     'text' => 'All content',
@@ -176,6 +178,7 @@ return [
                 [
                     'text' => 'Waiting validation',
                     'url'  => 'validation',
+                    'can'  => 'editor',
                 ],
                 [
                     'text' => 'Our articles',
@@ -184,6 +187,7 @@ return [
                 [
                     'text' => 'Create new article',
                     'url'  => 'article/create',
+                    'can'  => 'editor',
                     
                 ],
                 [
@@ -197,6 +201,7 @@ return [
                 [
                     'text' => 'Add new category',
                     'url'  => 'category/create',
+                    'can'  => 'editor',
                 ],
                 [
                     'text' => 'All tags',
@@ -205,6 +210,7 @@ return [
                 [
                     'text' => 'Add new tag',
                     'url'  => 'tag/create',
+                    'can'  => 'editor',
                 ],
             ],
         ],
@@ -219,6 +225,7 @@ return [
                 [
                     'text' => 'Create new service',
                     'url'  => 'service/create',
+                    'can' => 'admin',
                 ],
             ],
         ],
@@ -233,6 +240,7 @@ return [
                 [
                     'text' => 'Create new project',
                     'url'  => 'project/create',
+                    'can' => 'admin',
                 ],
             ],
         ],
@@ -247,6 +255,7 @@ return [
                 [
                     'text' => 'Add new client',
                     'url'  => 'client/create',
+                    'can' => 'admin',
                 ],
             ],
         ],

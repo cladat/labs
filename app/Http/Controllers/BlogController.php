@@ -8,6 +8,7 @@ use App\Tag;
 use App\Category;
 use App\ArticleTag;
 use App\Instagram;
+use App\Quote;
 use App\Comment;
 
 use Illuminate\Http\Request;
@@ -19,8 +20,9 @@ class BlogController extends Controller
         $articles = Article::where('validate', 1)->orderBy('created_at', 'title')->paginate(3);
         $categories = Category::all();
         $insta = Instagram::all();
+        $quote = Quote::all();
         $tags = Tag::all();
-        return view('pages.blog', compact('articles', 'categories', 'insta', 'tags'));
+        return view('pages.blog', compact('articles', 'categories', 'insta', 'tags', 'quote'));
     }
 
     public function show(Tag $tag) {
@@ -28,26 +30,29 @@ class BlogController extends Controller
         $articles = $tag->articles;
         $categories = Category::all();
         $insta = Instagram::all();
+        $quote = Quote::all();
         $tags = Tag::all();
-        return view('pages.blogtag', compact('articles', 'categories', 'insta', 'tags', 'tag'));
+        return view('pages.blogtag', compact('articles', 'categories', 'insta', 'tags', 'tag', 'quote'));
     }
 
     public function showcat(Category $category) {
         $articles = $category->articles;
         $categories = Category::all();
         $insta = Instagram::all();
+        $quote = Quote::all();
         $tags = Tag::all();
-        return view('pages.blogcat', compact('articles', 'categories', 'insta', 'tags'));
+        return view('pages.blogcat', compact('articles', 'categories', 'insta', 'tags', 'quote'));
     }
 
     public function read(Article $article) {
         $categories = Category::all();
         $insta = Instagram::all();
+        $quote = Quote::all();
         $tags = Tag::all();
         $id = $article->id;
         $comments = Comment::where('article_id', $id)->get();
         $cmpt = Comment::where('article_id', $id)->where('validate', 1)->get()->count();
-        return view('pages.blogread', compact('article', 'categories', 'insta', 'tags', 'comments', 'cmpt'));
+        return view('pages.blogread', compact('article', 'categories', 'insta', 'quote', 'tags', 'comments', 'cmpt'));
     }
 
     public function search(Request $request) {
@@ -58,7 +63,8 @@ class BlogController extends Controller
         ])->paginate(3);
         $categories = Category::all();
         $insta = Instagram::all();
+        $quote = Quote::all();
         $tags = Tag::all();
-        return view('pages.blog', compact('articles', 'categories', 'insta', 'tags'));
+        return view('pages.blog', compact('articles', 'categories', 'insta', 'tags', 'quote'));
     }
 }

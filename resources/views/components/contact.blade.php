@@ -1,4 +1,4 @@
-<div class="contact-section spad fix">
+<div class="contact-section spad fix" id="contact">
 		<div class="container">
 			<div class="row">
 				<!-- contact info -->
@@ -15,9 +15,9 @@
 				<!-- contact form -->
 				
 				<div class="col-md-6 col-pull">
-					@if (session('alert'))
+					@if (session('alertcont'))
 						<div class="alert alert-success">
-							{{ session('alert') }}
+							{{ session('alertcont') }}
 						</div>
 					@endif
 					<form action="{{route('contact.store')}}" method="POST" class="form-class" id="con_form">

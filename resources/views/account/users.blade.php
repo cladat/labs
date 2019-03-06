@@ -14,6 +14,8 @@
             <th scope="col">#</th>
             <th scope="col">Email</th>
             <th scope="col">Role</th>
+            <th scope="col">Nb of Articles</th>
+            <th scope="col">Articles list</th>
             <th scope="col">Manage</th>
             {{-- <th scope="col">Nb of articles</th> --}}
           </tr>
@@ -25,6 +27,13 @@
             <th scope="row">{{$item->id}}</th>
             <td class="{{$item->status===0 ? 'text-light':''}}">{{$item->email}}</td>
             <td class="{{$item->status===0 ? 'text-light':''}}">{{$item->role->name}}</td>
+            <td class="{{$item->status===0 ? 'text-light':''}}">{{$item->articles->count()}} </td>
+            <td class="{{$item->status===0 ? 'text-light':''}}">
+              @foreach ($item->articles as $art)
+              - "{{$art->title}}" 
+              @endforeach
+            </td>
+            
             <td> 
                 @can('update', $item)
                   <a href="{{route('users.edit', ['id'=>$item->id])}}" class="btn btn-warning">edit</a>

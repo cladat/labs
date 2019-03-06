@@ -5,6 +5,7 @@ use App\Service;
 use App\Content;
 use App\Project;
 use App\Icon;
+use App\Contact;
 use Illuminate\Http\Request;
 
 class ServicepageController extends Controller
@@ -17,6 +18,7 @@ class ServicepageController extends Controller
         $right = Project::all()->reverse()->take(3);
         $icon = Icon::all();
         $services = Service::paginate(9);
-        return view('pages.services', compact('cont', 'projects', 'left', 'right', 'icon', 'services'));
+        $contact = Contact::all();
+        return view('pages.services', compact('cont', 'projects', 'left', 'right', 'icon', 'services', 'contact'));
     }
 }

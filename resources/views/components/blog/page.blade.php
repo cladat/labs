@@ -18,7 +18,7 @@
 							<div class="post-meta">
 								<a href="">{{$article->profil->name}}</a>
 								@foreach ($article->tags as $tag)
-									<a href="">{{$tag->name}},</a>
+									<a href="">{{$tag->name}}</a>
                 @endforeach
 								<a href="">{{count($article->comments->where('validate', 1))}} Comments</a>
 							</div>
@@ -79,14 +79,16 @@
 						<h2 class="widget-title">Quote</h2>
 						<div class="quote">
 							<span class="quotation">‘​‌‘​‌</span>
-							<p>Vivamus in urna eu enim porttitor consequat. Proin vitae pulvinar libero. Proin ut hendrerit metus. Aliquam erat volutpat. Donec fermen tum convallis ante eget tristique. Sed lacinia turpis at ultricies vestibulum.</p>
+							@foreach ($quote as $item)
+								<p>{{$item->text}}</p>
+							@endforeach
 						</div>
 					</div>
 					<!-- Single widget -->
 					<div class="widget-item">
 						<h2 class="widget-title">Add</h2>
 						<div class="add">
-							<a href=""><img src="img/add.jpg" alt=""></a>
+							<a href=""><img src="{{asset('img/add.jpg')}}" alt=""></a>
 						</div>
 					</div>
 				</div>

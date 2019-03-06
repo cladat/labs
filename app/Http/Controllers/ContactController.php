@@ -46,7 +46,7 @@ class ContactController extends Controller
         $newcontact->message=$request->message;
         $newcontact->save();
         event(new ContactEvent($request));
-        return redirect()->back()->with('alert', 'Message sent!');
+        return redirect()->back()->with('alertcont', 'Message sent!');
     }
 
     /**

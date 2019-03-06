@@ -11,7 +11,7 @@
 						</div>
 						<div class="card-text">
 						<h2>{{$proj->title}}</h2>
-						<p>{{$proj->description}}</p>
+						<p>{!!str_limit($proj->description, 50)!!}</p>
 						</div>
 					</div>
 				</div>
