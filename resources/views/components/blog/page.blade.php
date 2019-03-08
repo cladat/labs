@@ -18,7 +18,8 @@
 							<div class="post-meta">
 								<a href="">{{$article->profil->name}}</a>
 								@foreach ($article->tags as $tag)
-									<a href="">{{$tag->name}}</a>
+										
+								<a href="">{{$tag->name}}</a>
                 @endforeach
 								<a href="">{{count($article->comments->where('validate', 1))}} Comments</a>
 							</div>
@@ -69,6 +70,7 @@
 						<h2 class="widget-title">Tags</h2>
 						<ul class="tag">
 							@foreach ($tags as $tag)
+									
 							<li><a href="{{route('blog.show', ['id'=>$tag->id])}}">{{$tag->name}} </a></li>
 						
 							@endforeach

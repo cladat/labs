@@ -28,6 +28,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('/validation', 'ValidationController');
     Route::resource('/newsletter', 'NewsletterController');
     Route::resource('/contact', 'ContactController');
+    Route::resource('/testimonial', 'TestimonialController');
 });
 
 Route::get('/users/{user}/block', 'UserController@block')->name('users.block');

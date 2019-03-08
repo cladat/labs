@@ -13,23 +13,15 @@ class ClientsTableSeeder extends Seeder
      */
     public function run()
     {
-        // Client::create([
-        //     'name' => 'Christof Tof',
-        //     'image' => 'img/avatar/01.jpg',
-        //     'job' => 'CEO Company',
-        //     'testimony' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..',
-        // ]);
-        // Client::create([
-        //     'name' => 'Christelle Telle',
-        //     'image' => 'img/avatar/02.jpg',
-        //     'job' => 'Head Manager Company',
-        //     'testimony' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..',
-        // ]);
-        // Client::create([
-        //     'name' => 'Michelle Belle',
-        //     'image' => 'img/avatar/03.jpg',
-        //     'job' => 'Assistant Company',
-        //     'testimony' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..',
-        // ]);
+        Client::create([
+            'name' => 'Dua Lipa',
+            'image' => 'img/avatar/01.jpg',
+            'job' => 'CEO Company',
+        ]);
+        Client::create([
+            'name' => 'Emma Watson',
+            'image' => 'img/avatar/02.jpg',
+            'job' => 'Head Manager Company',
+        ]);
     }
 }

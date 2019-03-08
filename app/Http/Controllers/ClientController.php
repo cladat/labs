@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Client;
+use App\Testimonial;
 use Storage;
 use Illuminate\Http\Request;
 
@@ -40,11 +41,10 @@ class ClientController extends Controller
         $newclient = new Client;
         $newclient->name = $request->name;
         $newclient->job = $request->job;
-        $newclient->testimony = $request->testimony;
         $newclient->image = $request->image->store('', 'image');
         $newclient->save();
         $clients = Client::all();
-        return view('site.clients', compact('clients'));
+        return view('site.clients', compact('clients', 'test'));
     }
 
     /**
@@ -80,7 +80,6 @@ class ClientController extends Controller
     {
         $client->name=$request->name;
         $client->job=$request->job;
-        $client->testimony=$request->testimony;
         $client->image=$request->image->store('', 'image');
         $client->save();
         $clients = Client::all();

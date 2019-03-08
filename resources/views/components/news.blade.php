@@ -13,14 +13,14 @@
 						<h2>Newsletter</h2>
 					</div>
 					<div class="col-md-9">
-						@if($errors->has('email'))
-							<div class="text-danger">{{$errors->first('email')}} </div>
-						@endif
 						<form action="{{route('newsletter.store')}}" method="POST" class="nl-form">
 							@csrf
-							<input type="text" placeholder="Your e-mail here" name="email">
-							<button type="submit" class="site-btn btn-2">Newsletter</button>
+							<input type="text" placeholder="Your e-mail here" name="mail">
+							<button type="submit" class="site-btn btn-2">submit</button>
 						</form>
+						@if($errors->has('mail'))
+						<div class="text-danger">{{$errors->first('mail')}} </div>
+						@endif
 					</div>	
 			</div>
 

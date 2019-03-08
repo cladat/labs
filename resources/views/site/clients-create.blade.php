@@ -24,11 +24,7 @@
                     <label for="">Photo</label>
                     <input type="file" name="image" id="">
                   </div>
-            <div class="form-group">
-                  <label for="">Testimony</label>
-                  <input type="text" name="testimony" id="" class="form-control" placeholder="" aria-describedby="helpId">
-                </div>
-    
+                  
         <button type="submit" class="btn btn-success"> create </button>
     
     </form>

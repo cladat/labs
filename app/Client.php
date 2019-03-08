@@ -10,4 +10,8 @@ class Client extends Model
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];
+
+    public function testimonials() {
+        return $this->hasMany('App\Testimonial', 'client_id', 'id');
+    }
 }

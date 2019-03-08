@@ -132,11 +132,6 @@ return [
                     'text' => 'Our Roles',
                     'url'  => 'roles',
                 ],
-                [
-                    'text' => 'Create new role',
-                    'url'  => 'roles/create',
-                    'can' => 'admin',
-                ],
             ],
         ],
         [

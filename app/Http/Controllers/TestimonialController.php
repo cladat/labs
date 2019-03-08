@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Newsletter;
+use App\Testimonial;
+use App\Client;
 use Illuminate\Http\Request;
-use App\Events\NewsletterEvent;
-use App\Http\Requests\StoreNewsletter;
 
-class NewsletterController extends Controller
+class TestimonialController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,7 +25,7 @@ class NewsletterController extends Controller
      */
     public function create()
     {
-        //
+        return view('site.testimonial-create');
     }
 
     /**
@@ -35,22 +34,20 @@ class NewsletterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreNewsletter $request)
+    public function store(Request $request)
     {
-        $newnewsletter = new Newsletter;
-        $newnewsletter->mail = $request->mail;
-        $newnewsletter->save();
-        event(new NewsletterEvent($request));
-        return redirect()->back()->with('alert', 'congrats, you just suscribed to our newsletter!');
+        $newtest = new Testimonial;
+        $newtest->text = $request->text;
+        $newtest->client_id = 
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Newsletter  $newsletter
+     * @param  \App\Testimonial  $testimonial
      * @return \Illuminate\Http\Response
      */
-    public function show(Newsletter $newsletter)
+    public function show(Testimonial $testimonial)
     {
         //
     }
@@ -58,10 +55,10 @@ class NewsletterController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Newsletter  $newsletter
+     * @param  \App\Testimonial  $testimonial
      * @return \Illuminate\Http\Response
      */
-    public function edit(Newsletter $newsletter)
+    public function edit(Testimonial $testimonial)
     {
         //
     }
@@ -70,10 +67,10 @@ class NewsletterController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Newsletter  $newsletter
+     * @param  \App\Testimonial  $testimonial
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Newsletter $newsletter)
+    public function update(Request $request, Testimonial $testimonial)
     {
         //
     }
@@ -81,10 +78,10 @@ class NewsletterController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Newsletter  $newsletter
+     * @param  \App\Testimonial  $testimonial
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Newsletter $newsletter)
+    public function destroy(Testimonial $testimonial)
     {
         //
     }

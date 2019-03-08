@@ -17,18 +17,30 @@
   
           <div class="form-group">
               <label for="">Title</label>
+              @if($errors->has('title'))
+	              <div  class="text-danger">{{$errors->first('title')}}</div>
+              @endif
               <input type="text" name="title" value="{{$project->title}} " class="form-control" placeholder="" aria-describedby="helpId">
             </div>
             <div class="form-group">
               <label for="">Description</label>
+              @if($errors->has('description'))
+	              <div  class="text-danger">{{$errors->first('description')}}</div>
+              @endif
               <input type="text" name="description" value="{{$project->description}} " class="form-control" placeholder="" aria-describedby="helpId">
             </div>
             <div class="form-group">
               <label for="">Icon code</label>
+              @if($errors->has('icon_id'))
+	              <div  class="text-danger">{{$errors->first('icon_id')}}</div>
+              @endif
               <input type="text" name="icon_id" value="{{$project->icon_id}} " class="form-control" placeholder="" aria-describedby="helpId">
             </div>
             <div class="form-group">
               <label for="">Photo</label>
+              @if($errors->has('image'))
+	              <div  class="text-danger">{{$errors->first('image')}}</div>
+              @endif
               <input type="file" name="image" class="form-control" placeholder="" aria-describedby="helpId">
             </div>
         

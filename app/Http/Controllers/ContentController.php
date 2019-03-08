@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Content;
 use Storage;
 use Illuminate\Http\Request;
+use App\Http\Requests\UpdateContent;
 
 class ContentController extends Controller
 {
@@ -70,10 +71,12 @@ class ContentController extends Controller
      * @param  \App\Content  $content
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Content $content)
+    public function update(UpdateContent $request, Content $content)
     {
         $content->carousel_text=$request->carousel_text;
-        $content->carousel_logo=$request->carousel_logo->store('', 'image');
+        if ($request->carousel_logo) {
+            $content->carousel_logo = $request->carousel_logo->store('', 'image');
+        }
         $content->projects_title=$request->projects_title;
         $content->projects_text1 = $request->projects_text1;
         $content->projects_text2 = $request->projects_text2;

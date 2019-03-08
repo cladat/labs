@@ -6,6 +6,8 @@ use App\Project;
 use App\Icon;
 use Storage;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreProject;
+use App\Http\Requests\UpdateProject;
 
 class ProjectController extends Controller
 {
@@ -38,7 +40,7 @@ class ProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProject $request)
     {
         $newproj = new Project;
         $newproj->title=$request->title;
@@ -81,12 +83,14 @@ class ProjectController extends Controller
      * @param  \App\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Project $project)
+    public function update(UpdateProject $request, Project $project)
     {
         $project->title=$request->title;
         $project->description=$request->description;
         $project->icon_id=$request->icon_id;
-        $project->image=$request->image->store('', 'image');
+        if ($request->image) {
+            $project->image=$request->image->store('', 'image');
+        }
         $project->save();
         $icon = Icon::all();
         $projects = Project::all();

@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Events\MailEvent;
 
+use App\Comment;
+use App\Article;
+use App\Profil;
+use Auth;
+
 class HomeController extends Controller
 {
     /**
@@ -24,7 +29,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $com = Comment::where('validate', 0)->count();
+        $art = Article::where('validate', 0)->count();
+        $user = Auth::user();
+        return view('home', compact('com', 'art', 'user'));
     }
 
 }

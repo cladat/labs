@@ -16,7 +16,7 @@ class CreateContentsTable extends Migration
         Schema::create('contents', function (Blueprint $table) {
             $table->increments('id');
             $table->string('carousel_text');
-            $table->string('carousel_logo');
+            $table->string('carousel_logo')->nullable();
             $table->string('projects_title');
             $table->text('projects_text1');
             $table->text('projects_text2');

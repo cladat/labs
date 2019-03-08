@@ -26,8 +26,8 @@ class StoreComment extends FormRequest
         return [
             'name' => 'required|max:20|min:3',
             'email' => 'required|email',
-            'message' => 'required',
-            'subject' => 'required',
+            'message' => 'required|max:300|min:20',
+            'subject' => 'required|max:100',
         ];
     }
     public  function  messages(){
@@ -38,7 +38,11 @@ class StoreComment extends FormRequest
             'email.required' => 'email pliz',
             'email.email' => 'email only pliz',
             'message.required' => 'write ur msg pliz',
+            'message.max' => 'max 300 char pliz dont go crazay',
+            'message.min' => 'min 20 char pliz write a real message',
             'subject.required' => 'pliz enter subject',
+            'subject.max' => 'not too long pliz max 100 char.',
+
         ];
     }
 }

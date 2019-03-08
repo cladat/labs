@@ -2,7 +2,7 @@
 		<div class="container">
 			<div class="row">
 				<!-- Single Card -->
-				@foreach ($projects as $proj)
+				@foreach ($card as $proj)
 
 				<div class="col-md-4 col-sm-6">
 					<div class="sv-card">

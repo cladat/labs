@@ -98,8 +98,10 @@ class UserController extends Controller
     {
         // $this->authorize('update', $user);
         $user->email=$request->email;
-        $user->password=bcrypt($request->password);
-        $user->role_id=$request->role_id;
+        // $user->password=bcrypt($request->password);
+        if($user->role_id !== 1) {
+            $user->role_id=$request->role_id;
+        }
         $user->save();
         $users = User::all();
         return view('account.users', compact('users'));

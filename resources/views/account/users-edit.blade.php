@@ -26,12 +26,13 @@
     </div>
   
     {{-- PASSWORD field --}}
-    <div class="form-group">
+    {{-- <div class="form-group">
         <label for="">Password</label>
         <input type="text" name="password" value="{{$user->password}} " class="form-control" placeholder="" aria-describedby="helpId">
-      </div>
+      </div> --}}
   
       {{-- ROLE field --}}
+      @if ($user->role_id !== 1)
       <div class="form-group">
           <label for="">Role</label>
           <select name="role_id">
@@ -40,6 +41,7 @@
             @endforeach 
             </select>
         </div>
+        @endif
   
       <button class="btn btn-success" type="submit">update</button>
   

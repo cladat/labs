@@ -22,10 +22,6 @@
             <input type="text" name="job" value="{{$client->job}} " class="form-control" placeholder="" aria-describedby="helpId">
           </div>
           <div class="form-group">
-            <label for="">Testimony</label>
-            <input type="text" name="testimony" value="{{$client->testimony}} " class="form-control" placeholder="" aria-describedby="helpId">
-          </div>
-          <div class="form-group">
             <label for="">Photo</label>
             <input type="file" name="image" class="form-control" placeholder="" aria-describedby="helpId">
           </div>

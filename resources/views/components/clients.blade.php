@@ -10,12 +10,14 @@
 						<!-- single testimonial -->
 						
 						@foreach ($clients as $client)
-								
 						<div class="testimonial">
 							<span>‘​‌‘​‌</span>
-							<p>{{$client->testimony}}</p>
+							@foreach ($client->testimonials as $item)
+							<p>{{$item->text}}</p>
+							@endforeach
 							<div class="client-info">
 								<div class="avatar">
+									<img src="{{$client->image}}" alt="">
 									<img src="{{Storage::disk('image')->url($client->image)}}" alt="">
 								</div>
 								<div class="client-name">
