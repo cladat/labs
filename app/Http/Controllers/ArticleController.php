@@ -8,6 +8,8 @@ use App\User;
 use App\Profil;
 use App\Tag;
 use App\ArticleTag;
+use App\Http\Requests\StoreArticle;
+use App\Http\Requests\UpdateArticle;
 use Auth;
 use Illuminate\Http\Request;
 use App\Events\MailarticleEvent;
@@ -46,7 +48,7 @@ class ArticleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreArticle $request)
     {
         $newarticle = new Article;
         $newarticle->title=$request->title;
@@ -98,14 +100,16 @@ class ArticleController extends Controller
      * @param  \App\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Article $article)
+    public function update(UpdateArticle $request, Article $article)
     {
         $this->authorize('update', $article);
         $article->title=$request->title;
         $article->text=$request->text;
         $article->comms = $request->comms;
         $article->category_id=$request->category_id;
-        $article->image=$request->image->store('', 'image');
+        if($request->image) {
+            $article->image=$request->image->store('', 'image');
+        }
         $article->save();
         $tag = Tag::all();
         $article->tags()->detach($tag);

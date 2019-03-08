@@ -18,37 +18,37 @@ class BlogController extends Controller
     public function index() {
 
         $articles = Article::where('validate', 1)->orderBy('created_at', 'title')->paginate(3);
-        $categories = Category::all();
+        $categories = Category::has('articles')->get();
         $insta = Instagram::all();
         $quote = Quote::all();
-        $tags = Tag::all();
+        $tags = Tag::has('articles')->get();
         return view('pages.blog', compact('articles', 'categories', 'insta', 'tags', 'quote'));
     }
 
     public function show(Tag $tag) {
 
         $articles = $tag->articles;
-        $categories = Category::all();
+        $categories = Category::has('articles')->get();
         $insta = Instagram::all();
         $quote = Quote::all();
-        $tags = Tag::all();
+        $tags = Tag::has('articles')->get();
         return view('pages.blogtag', compact('articles', 'categories', 'insta', 'tags', 'tag', 'quote'));
     }
 
     public function showcat(Category $category) {
         $articles = $category->articles;
-        $categories = Category::all();
+        $categories = Category::has('articles')->get();
         $insta = Instagram::all();
         $quote = Quote::all();
-        $tags = Tag::all();
+        $tags = Tag::has('articles')->get();
         return view('pages.blogcat', compact('articles', 'categories', 'insta', 'tags', 'quote'));
     }
 
     public function read(Article $article) {
-        $categories = Category::all();
+        $categories = Category::has('articles')->get();
         $insta = Instagram::all();
         $quote = Quote::all();
-        $tags = Tag::all();
+        $tags = Tag::has('articles')->get();
         $id = $article->id;
         $comments = Comment::where('article_id', $id)->get();
         $cmpt = Comment::where('article_id', $id)->where('validate', 1)->get()->count();
@@ -61,10 +61,10 @@ class BlogController extends Controller
             ['validate', 1],
             ['title', 'LIKE', '%'.$keyword.'%'] 
         ])->paginate(3);
-        $categories = Category::all();
+        $categories = Category::has('articles')->get();
         $insta = Instagram::all();
         $quote = Quote::all();
-        $tags = Tag::all();
+        $tags = Tag::has('articles')->get();
         return view('pages.blog', compact('articles', 'categories', 'insta', 'tags', 'quote'));
     }
 }

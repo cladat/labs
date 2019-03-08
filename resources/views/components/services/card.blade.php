@@ -7,11 +7,11 @@
 				<div class="col-md-4 col-sm-6">
 					<div class="sv-card">
 						<div class="card-img">
-						<img src="{{Storage::disk('image')->url($proj->image)}}" alt="">
+						<img src="{{Storage::disk('image')->url($proj->image)}}" alt="" style="height:300px;">
 						</div>
 						<div class="card-text">
 						<h2>{{$proj->title}}</h2>
-						<p>{!!str_limit($proj->description, 50)!!}</p>
+						<p style="height:100px;">{!!str_limit($proj->description, 50)!!}</p>
 						</div>
 					</div>
 				</div>

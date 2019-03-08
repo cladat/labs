@@ -15,6 +15,9 @@
   
   <div class="form-group">
       <label for="">Name</label>
+      @if($errors->has('name'))
+	      <div  class="text-danger">{{$errors->first('name')}}</div>
+    @endif
       <input type="text" name="name" value="{{$category->name}} " class="form-control" placeholder="" aria-describedby="helpId">
   </div>
 

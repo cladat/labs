@@ -8,12 +8,15 @@
 
 @section('content')
 
-<form action="{{route('testimonial.store')}} " method="POST" enctype="multipart/form-data">
+<form action="{{route('testistore',['client'=>$client->id])}} " method="POST" enctype="multipart/form-data">
 
     @csrf
     
     <div class="form-group">
       <label for="">Text</label>
+      @if($errors->has('text'))
+	      <div  class="text-danger">{{$errors->first('text')}}</div>
+      @endif
       <input type="text" name="text" id="" class="form-control" placeholder="" aria-describedby="helpId">
     </div>
                   

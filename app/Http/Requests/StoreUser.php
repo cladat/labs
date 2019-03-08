@@ -25,6 +25,10 @@ class StoreUser extends FormRequest
     {
         return [
             'email' => 'required|email|unique:users',
+            'password' => 'required|max:30|min:6',
+            'name' => 'required|min:3',
+            'job' => 'required|min:3|max:40',
+            'image' => 'required|image'
         ];
     }
     public function messages(){

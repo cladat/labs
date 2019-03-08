@@ -6,6 +6,9 @@ use App\Client;
 use App\Testimonial;
 use Storage;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreClient;
+use App\Http\Requests\UpdateClient;
+
 
 class ClientController extends Controller
 {
@@ -36,7 +39,7 @@ class ClientController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreClient $request)
     {
         $newclient = new Client;
         $newclient->name = $request->name;
@@ -76,11 +79,13 @@ class ClientController extends Controller
      * @param  \App\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Client $client)
+    public function update(UpdateClient $request, Client $client)
     {
         $client->name=$request->name;
         $client->job=$request->job;
-        $client->image=$request->image->store('', 'image');
+        if ($request->image) {
+            $client->image=$request->image->store('', 'image');
+        }
         $client->save();
         $clients = Client::all();
         return view('site.clients', compact('clients'));

@@ -12,7 +12,9 @@
 
     @csrf
       <div class="form-group">
-        <label for="">Photo</label>
+        @if($errors->has('photo'))
+	      <div  class="text-danger">{{$errors->first('photo')}}</div>
+      @endif
         <input type="file" name="photo" id="">
       </div>
     

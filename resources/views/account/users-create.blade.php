@@ -20,10 +20,13 @@
           @endforeach 
         @endif
           <input type="text"
-          class="form-control {{$errors->has('email') ? 'border-danger':''}}" name="email" id="">
+          class="form-control" name="email" id="">
           </div>
           <div class="form-group">
             <label for="">Password</label>
+            @if($errors->has('password'))
+	           <div  class="text-danger">{{$errors->first('password')}}</div>
+            @endif
             <input type="text"
                 class="form-control" name="password" id="">
             </div>
@@ -38,14 +41,23 @@
             
               <div class="form-group">
                   <label for="">Name</label>
+                  @if($errors->has('name'))
+	                <div  class="text-danger">{{$errors->first('name')}}</div>
+                  @endif
                   <input type="text" name="name" id="" class="form-control" placeholder="" aria-describedby="helpId">
                 </div>
                 <div class="form-group">
                     <label for="">Job</label>
+                    @if($errors->has('job'))
+	                <div  class="text-danger">{{$errors->first('job')}}</div>
+                  @endif
                     <input type="text" name="job" id="" class="form-control" placeholder="" aria-describedby="helpId">
                   </div>
                 <div class="form-group">
                     <label for="">Photo</label>
+                    @if($errors->has('image'))
+	                <div  class="text-danger">{{$errors->first('image')}}</div>
+                  @endif
                     <input type="file" name="image" id="">
                   </div>
     

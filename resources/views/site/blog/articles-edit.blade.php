@@ -15,10 +15,16 @@
 
         <div class="form-group">
             <label for="">Title</label>
+            @if($errors->has('title'))
+	          <div  class="text-danger">{{$errors->first('title')}}</div>
+            @endif
             <input type="text" name="title" value="{{$article->title}} " class="form-control" placeholder="" aria-describedby="helpId">
           </div>
           <div class="form-group">
             <label for="">Text</label>
+            @if($errors->has('text'))
+	      <div  class="text-danger">{{$errors->first('text')}}</div>
+            @endif
           <textarea name="text"  id="summary-ckeditor">{!! old('text', $article->text)!!}</textarea>
             <script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
             <script>

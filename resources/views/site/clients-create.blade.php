@@ -14,14 +14,23 @@
     
             <div class="form-group">
                 <label for="">Name</label>
+                @if($errors->has('name'))
+	      <div  class="text-danger">{{$errors->first('name')}}</div>
+        @endif
                 <input type="text" name="name" id="" class="form-control" placeholder="" aria-describedby="helpId">
               </div>
               <div class="form-group">
                   <label for="">Job</label>
+                  @if($errors->has('job'))
+	      <div  class="text-danger">{{$errors->first('job')}}</div>
+        @endif
                   <input type="text" name="job" id="" class="form-control" placeholder="" aria-describedby="helpId">
                 </div>
                 <div class="form-group">
                     <label for="">Photo</label>
+                    @if($errors->has('image'))
+	      <div  class="text-danger">{{$errors->first('image')}}</div>
+        @endif
                     <input type="file" name="image" id="">
                   </div>
                   

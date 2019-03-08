@@ -14,10 +14,16 @@
         @csrf
       <div class="form-group">
         <label for="">Name</label>
+        @if($errors->has('name'))
+	      <div  class="text-danger">{{$errors->first('name')}}</div>
+        @endif
         <input type="text" name="name" value="{{$profil->name}} " class="form-control" placeholder="" aria-describedby="helpId">
       </div>
       <div class="form-group">
           <label for="">Job</label>
+          @if($errors->has('job'))
+	      <div  class="text-danger">{{$errors->first('job')}}</div>
+        @endif
           <input type="text" name="job" value="{{$profil->job}} " class="form-control" placeholder="" aria-describedby="helpId">
         </div>
         <div class="form-group">

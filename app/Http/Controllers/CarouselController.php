@@ -7,6 +7,7 @@ use App\Services\Intervention;
 use Image;
 use Storage;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreCarousel;
 
 class CarouselController extends Controller
 {
@@ -37,7 +38,7 @@ class CarouselController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Intervention $intervention)
+    public function store(StoreCarousel $request, Intervention $intervention)
     {
         $newcarou = new Carousel;
         $newcarou->photo = $request->photo->store('', 'image');

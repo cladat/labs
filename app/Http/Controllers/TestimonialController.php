@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Testimonial;
 use App\Client;
+use App\Http\Requests\StoreTestimonial;
 use Illuminate\Http\Request;
 
 class TestimonialController extends Controller
@@ -23,9 +24,9 @@ class TestimonialController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Client $client)
     {
-        return view('site.testimonial-create');
+        return view('site.testimonial-create', compact('client'));
     }
 
     /**
@@ -34,11 +35,12 @@ class TestimonialController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Client $client)
     {
-        $newtest = new Testimonial;
-        $newtest->text = $request->text;
-        $newtest->client_id = 
+        // dd($client);
+        // $newtest = new Testimonial;
+        // $newtest->text = $request->text;
+        // $newtest->client_id = $client->id;
     }
 
     /**
@@ -60,7 +62,7 @@ class TestimonialController extends Controller
      */
     public function edit(Testimonial $testimonial)
     {
-        //
+        return view('site.testimonial-edit', compact('testimonial'));
     }
 
     /**
@@ -72,7 +74,8 @@ class TestimonialController extends Controller
      */
     public function update(Request $request, Testimonial $testimonial)
     {
-        //
+      //
+        
     }
 
     /**
@@ -83,6 +86,24 @@ class TestimonialController extends Controller
      */
     public function destroy(Testimonial $testimonial)
     {
-        //
+        $testimonial->delete();
+        return redirect()->back();
+    }
+
+    public function storetest(StoreTestimonial $request, $client)
+    {
+        $newtest = new Testimonial;
+        $newtest->text = $request->text;
+        $newtest->client_id = $client;
+        $newtest->save();
+        $clients = Client::all();
+        return view('site.clients', compact('clients'));
+    }
+
+    public function updatetest(StoreTestimonial $request, Testimonial $testimonial) {
+        $testimonial->text = $request->text;
+        $testimonial->save();
+        $clients = Client::all();
+        return view('site.clients', compact('clients'));
     }
 }

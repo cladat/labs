@@ -19,8 +19,7 @@ class HomepageController extends Controller
 
         $carou = Carousel::all();
         $cont = Content::all()->first();
-        $clients = Client::all();
-        // dd($clients->testimonials);
+        $testim = Testimonial::inRandomOrder()->get();
         $projects = Project::all()->reverse()->take(3);
         $icon = Icon::all();
         $services = Service::paginate(9);
@@ -33,6 +32,6 @@ class HomepageController extends Controller
         if ($profils == $profilss) {
             return $this->index();
         }
-        return view('welcome', compact('carou', 'cont', 'clients', 'projects', 'icon', 'services', 'profils', 'admin', 'profilss'));
+        return view('welcome', compact('carou', 'cont', 'projects', 'icon', 'services', 'profils', 'admin', 'profilss', 'testim'));
     }
 }

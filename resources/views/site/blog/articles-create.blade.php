@@ -13,11 +13,17 @@
     @csrf
         <div class="form-group">
             <label for="">Title</label>
-            <input type="text" name="title" id="" class="form-control" placeholder="" aria-describedby="helpId">
+            @if($errors->has('title'))
+	      <div  class="text-danger">{{$errors->first('title')}}</div>
+            @endif
+        <input type="text" name="title" value="{{old('title')}}" class="form-control" placeholder="" aria-describedby="helpId">
         </div>
         <div class="form-group">
             <label for="">Texte</label>
-            <textarea name="text" id="summary-ckeditor" cols="30" rows="10"></textarea>
+            @if($errors->has('text'))
+	      <div  class="text-danger">{{$errors->first('text')}}</div>
+      @endif
+            <textarea name="text" id="summary-ckeditor" cols="30" rows="10">{{old('text')}} </textarea>
             <script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
             <script>
              CKEDITOR.replace( 'summary-ckeditor' );
@@ -25,6 +31,9 @@
         </div>
         <div class="form-group">
             <label for="">Image</label>
+            @if($errors->has('image'))
+	      <div  class="text-danger">{{$errors->first('image')}}</div>
+      @endif
             <input type="file" name="image" id="">
         </div>
         <div class="form-group">

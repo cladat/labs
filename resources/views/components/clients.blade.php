@@ -9,20 +9,18 @@
 					<div class="owl-carousel" id="testimonial-slide">
 						<!-- single testimonial -->
 						
-						@foreach ($clients as $client)
+						@foreach ($testim as $tes)
 						<div class="testimonial">
 							<span>‘​‌‘​‌</span>
-							@foreach ($client->testimonials as $item)
-							<p>{{$item->text}}</p>
-							@endforeach
+							<p>{{$tes->text}}</p>
 							<div class="client-info">
 								<div class="avatar">
-									<img src="{{$client->image}}" alt="">
-									<img src="{{Storage::disk('image')->url($client->image)}}" alt="">
+									<img src="{{$tes->client->image}}" alt="">
+									<img src="{{Storage::disk('image')->url($tes->client->image)}}" alt="">
 								</div>
 								<div class="client-name">
-								<h2>{{$client->name}}</h2>
-								<p>{{$client->job}}</p>
+								<h2>{{$tes->client->name}}</h2>
+								<p>{{$tes->client->job}}</p>
 								</div>
 							</div>
 						</div>

@@ -8,14 +8,17 @@
 
 @section('content')
 
-<form action="{{route('testimonial.update', ['id'=>$->id])}} " method="POST" enctype="multipart/form-data">
+<form action="{{route('testiupdate', ['testimonial'=>$testimonial->id])}} " method="POST" enctype="multipart/form-data">
 
 @method('PUT')
 @csrf
 
 <div class="form-group">
     <label for="">Text</label>
-    <input type="text" name="text" value="{{$->name}} " class="form-control" placeholder="" aria-describedby="helpId">
+    @if($errors->has('text'))
+        <div  class="text-danger">{{$errors->first('text')}}</div>
+    @endif
+    <input type="text" name="text" value="{{$testimonial->text}} " class="form-control" placeholder="" aria-describedby="helpId">
 </div>
 <button class="btn btn-success" type="submit">update</button>
       

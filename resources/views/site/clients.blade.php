@@ -37,16 +37,16 @@
             @foreach ($client->testimonials as $item)
             <p>" {{$item->text}} "</p>
             {{-- buttons to edit and delete each testimonial --}}
-            {{-- @can('admin')
-              <a href="{{route('testimonial.edit',['id'=>$item->id])}}" class="btn btn-primary">edit</a>
+            @can('admin')
+              <a href="{{route('testimonial.edit',['testimonial'=>$item->id])}}" class="btn btn-primary">edit</a>
             @endcan 
             @can('admin')
-            <form action="{{route('testimonial.destroy', ['id'=>$item->id])}}" method="POST">
+            <form action="{{route('testimonial.destroy', ['testimonial'=>$item->id])}}" method="POST">
                 @method('DELETE')
                 @csrf
                 <button class="btn btn-danger">delete</button>
             </form> 
-            @endcan --}}
+            @endcan
             <hr>
             @endforeach
             </div>

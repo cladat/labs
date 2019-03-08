@@ -17,11 +17,19 @@
 							<h2 class="post-title"> {{$article->title}} </h2>
 							<div class="post-meta">
 								<a href="">{{$article->profil->name}}</a>
+								
+								<a href="">
 								@foreach ($article->tags as $tag)
-										
-								<a href="">{{$tag->name}}</a>
-                @endforeach
-								<a href="">{{count($article->comments->where('validate', 1))}} Comments</a>
+
+								@if ($loop->last)
+								{{$tag->name}}
+								@else
+								{{$tag->name}},
+								@endif
+								@endforeach
+								</a>
+
+								<a href="">{{count($article->comments->where('validate', 1))}} comment </a>
 							</div>
 							<p> {!! str_limit($article->text, 150)!!}</p>
 							<a href="{{route('blog.read', ['id'=>$article->id])}}" class="read-more">Read More</a>

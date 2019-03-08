@@ -6,6 +6,7 @@ use App\Tag;
 use App\Category;
 use App\Instagram;
 use App\Article;
+use App\Http\Requests\StoreCategory;
 use Illuminate\Http\Request;
 
 class TagController extends Controller
@@ -37,7 +38,7 @@ class TagController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCategory $request)
     {
         $newtag = new Tag;
         $newtag->name = $request->name;
@@ -79,7 +80,7 @@ class TagController extends Controller
      * @param  \App\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tag $tag)
+    public function update(StoreCategory $request, Tag $tag)
     {
         $tag->name = $request->name;
         $tag->save();

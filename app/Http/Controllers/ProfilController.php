@@ -7,6 +7,8 @@ use App\Role;
 use App\User;
 use App\Services\Intervention;
 use Illuminate\Http\Request;
+use App\Http\Requests\UpdateProfil;
+
 
 use Storage;
 
@@ -75,13 +77,15 @@ class ProfilController extends Controller
      * @param  \App\Profil  $profil
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Profil $profil, Intervention $intervention)
+    public function update(UpdateProfil $request, Profil $profil, Intervention $intervention)
     {
        
         // $this->authorize('update', $profil);
         $profil->name=$request->name;
         $profil->job=$request->job;
-        $profil->image=$request->image->store('', 'image');
+        if($request->image) {
+            $profil->image=$request->image->store('', 'image');
+        }
         // image intervention to resize image
         $img = $intervention->imageResize('image','300','300',$profil->image);
         $img->save();
